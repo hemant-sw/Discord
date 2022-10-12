@@ -6,9 +6,10 @@ export const authActions = {
 
 export const getAction = (dispatch) => {
     return {
-        login : (userDetails,history) => dispatch(login(userDetails,history)),
-        register : (userDetails,history) =>
-        dispatch(register(userDetails,history)),
+        login : (userDetails,navigate) => 
+        dispatch(login(userDetails,navigate)),
+        register : (userDetails,navigate) =>
+        dispatch(register(userDetails,navigate)),
     };
 
 };
@@ -20,25 +21,26 @@ const setUserDetails = (userDetails) => {
     };
 };
 
-const login = (userDetails,history) => {
+const login = (userDetails, navigate) => {
     return async (dispatch) => {
-        const response = await api.login(userDetails);
-        
-        if (response.error) {
-            // message alert
-        } else {
-            const {userDetails} = response?.data;
-            localStorage.setItem("user", JSON.stringify(userDetails));
-
-            dispatch(setUserDetails(userDetails));
-            history.push("/dashboard");
-        }
+      const response = await api.login(userDetails);
+      console.log(response);
+      if (response.error) {
+        //hjgcjh
+      } else {
+        const { userDetails } = response?.data;
+        localStorage.setItem("user", JSON.stringify(userDetails));
+  
+        dispatch(setUserDetails(userDetails));
+        navigate("/dashboard");
+      }
     };
-};
+  };
 
-const register = (userDetails,history) => {
+const register = (userDetails,navigate) => {
     return async (dispatch) => {
         const response = await api.register(userDetails);
+        console.log(response);
         
         if (response.error) {
             // message alert
@@ -47,7 +49,7 @@ const register = (userDetails,history) => {
             localStorage.setItem("user", JSON.stringify(userDetails));
 
             dispatch(setUserDetails(userDetails));
-            history.push("/dashboard");
+            navigate("/dashboard");
         }
     };
 };
