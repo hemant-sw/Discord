@@ -1,5 +1,6 @@
 import React from 'react';
 import {styled} from '@mui/system';
+import { MainPageButton } from './MainPageButton';
 
 
 const MainContainer = styled("div")({
@@ -15,6 +16,7 @@ export const SideBar = () => {
   return (
     <div>
        <MainContainer>
+        <MainPageButton/>
         
        </MainContainer>
     </div>
