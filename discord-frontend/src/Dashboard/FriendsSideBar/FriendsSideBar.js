@@ -6,6 +6,7 @@ import { FriendsList } from './FriendsList/FriendsList';
 import { PendingInvitstionaList } from './PendingInvitationsList/PendingInvitstionaList';
 
 
+
 const MainContainer = styled("div")({
     width: "224px",
     height: "100%",
